@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/To-Hell-And-Back/precache-manifest.639113e03e00112f3855a2721a1ce0bf.js"
+  "/ToHell/precache-manifest.e0d9cba4f0a4db75463f503912f9b51e.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/To-Hell-And-Back/index.html", {
+workbox.routing.registerNavigationRoute("/ToHell/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

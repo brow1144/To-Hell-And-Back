@@ -4,11 +4,12 @@
   "homepage": "http://brow1144.github.io/ToHell/",
   "private": true,
   "dependencies": {
-    "firebase": "5.5.5",
+    "firebase": "^5.7.0",
     "mdbreact": "^4.8.5-patch.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "reactstrap": "^6.5.0"
+    "reactstrap": "^6.5.0",
+    "terser": "3.10.11"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",

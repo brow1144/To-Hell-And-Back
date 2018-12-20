@@ -2,7 +2,9 @@
 // const firebase = require("firebase");
 // // Required for side-effects
 // require("firebase/firestore");
-import firebase from 'firebase'
+// import firebase from 'firebase'
+var firebase = require("firebase/app");
+require("firebase/firestore");
 
 firebase.initializeApp({
   apiKey: "AIzaSyDynm1iQEugqjNl9b4UoVD5ANFhdJ3uW3c",
@@ -12,6 +14,8 @@ firebase.initializeApp({
   storageBucket: "tohell-b7845.appspot.com",
   messagingSenderId: "568288665390"
 });
+
+// export const  db = firebase.database();
 
 export const db = firebase.firestore();
 

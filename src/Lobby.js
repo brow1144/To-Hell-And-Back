@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
 
 import { NavLink } from 'react-router-dom'
-// import {db} from './base.js';
+import {db} from './base.js';
 import {Row, Col} from 'reactstrap'
 import {Button} from 'mdbreact'
 
 class Lobby extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      players: [],
+    }
+  }
+
+  componentWillMount = () => {
+    let self = this
+
+    db.collection("games").doc(this.props.code.toString())
+    .onSnapshot(function(doc) {
+        console.log(doc.data().players);
+        self.setState({players: doc.data().players})
+    });
+  }
 
   render() {
     return (
@@ -16,48 +34,22 @@ class Lobby extends Component {
                   backgroundColor: '#282c34', color: "whitesmoke", 
                   paddingTop: '2em'}}
         >
-          Join at Code: 13424
+          Join at Code: {this.props.code}
         </p>
 
         <div style={{backgroundColor: '#282c34', color: 'whitesmoke',
                       paddingTop: '5em', }}>
+                      
           <Row>
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col>  
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
-            <Col sm='3'>
-              <p>Lobby!</p>
-            </Col> 
+          {this.state.players.map((key) => {
+             return (
+              <Col sm='3'>
+                <p>{key}</p>
+              </Col> 
+                  
+            )
+          })}
+  
           </Row>
 
           <p style={{height: '5em'}}> </p>

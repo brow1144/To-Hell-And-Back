@@ -28,13 +28,18 @@ class CreateGame extends Component {
   }
 
   goToLobby = () => {
+    let self = this
     if (this.state.name === null || this.state.name === '' || this.state.name === undefined) {
       this.setState({visible: true})
       return
     }
 
+    // db.ref(`games/${this.state.code.toString()}`).set({
+    //   players: [this.state.name],
+    // });
+
     db.collection("games").doc(this.state.code.toString()).set({
-      name: "Testing"
+      players: [this.state.name]
     })
     .then(function() {
         console.log("Document successfully written!");
@@ -62,7 +67,7 @@ class CreateGame extends Component {
             
           <MDBInput onChange={this.updateName} name='gameCode' style={{color: "whitesmoke"}} label="Name" />
 
-          <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Lobby`}>
+          <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Lobby/${this.state.code}`}>
             <Button
                 outline
                 color="primary"

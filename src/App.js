@@ -19,15 +19,15 @@ class App extends Component {
       <Switch>
 
         <Route exact path='/ToHell/CreateGame' render={() => (
-            <CreateGame />
+            <CreateGame setGameCode={this.setGameCode}/>
         )}/>
         
         <Route exact path='/ToHell/Home' render={() => (
             <Home />
         )}/>
 
-         <Route exact path='/ToHell/Lobby' render={() => (
-            <Lobby />
+         <Route exact path='/ToHell/Lobby/:code' render={(match) => (
+            <Lobby code={match.match.params.code}/>
         )}/>
 
         <Route render={() => {

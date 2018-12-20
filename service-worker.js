@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/To-Hell-And-Back/precache-manifest.280be17f04dca55b0aebe892910d7c28.js"
+  "/To-Hell-And-Back/precache-manifest.639113e03e00112f3855a2721a1ce0bf.js"
 );
 
 workbox.clientsClaim();

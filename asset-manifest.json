@@ -1,17 +1,17 @@
 {
   "main.css": "/ToHell/static/css/main.5b24225d.chunk.css",
-  "main.js": "/ToHell/static/js/main.b6218974.chunk.js",
-  "main.js.map": "/ToHell/static/js/main.b6218974.chunk.js.map",
+  "main.js": "/ToHell/static/js/main.8ee9bad1.chunk.js",
+  "main.js.map": "/ToHell/static/js/main.8ee9bad1.chunk.js.map",
   "static/css/1.60d4c082.chunk.css": "/ToHell/static/css/1.60d4c082.chunk.css",
   "static/js/1.861015f4.chunk.js": "/ToHell/static/js/1.861015f4.chunk.js",
   "static/js/1.861015f4.chunk.js.map": "/ToHell/static/js/1.861015f4.chunk.js.map",
   "runtime~main.js": "/ToHell/static/js/runtime~main.8a60d957.js",
   "runtime~main.js.map": "/ToHell/static/js/runtime~main.8a60d957.js.map",
-  "static/media/mdb.css": "/ToHell/static/media/Roboto-Bold.e31fcf18.ttf",
+  "static/media/mdb.css": "/ToHell/static/media/Roboto-Light.46e48ce0.ttf",
   "static/media/font-awesome.min.css": "/ToHell/static/media/fontawesome-webfont.fee66e71.woff",
   "static/css/main.5b24225d.chunk.css.map": "/ToHell/static/css/main.5b24225d.chunk.css.map",
   "static/css/1.60d4c082.chunk.css.map": "/ToHell/static/css/1.60d4c082.chunk.css.map",
   "index.html": "/ToHell/index.html",
-  "precache-manifest.c872a05a404a964b58e5b97014a5bb34.js": "/ToHell/precache-manifest.c872a05a404a964b58e5b97014a5bb34.js",
+  "precache-manifest.d0fb13fc4efcfce8264171f342382e44.js": "/ToHell/precache-manifest.d0fb13fc4efcfce8264171f342382e44.js",
   "service-worker.js": "/ToHell/service-worker.js"
 }

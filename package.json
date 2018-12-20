@@ -1,7 +1,7 @@
 {
   "name": "to_hell_and_back",
   "version": "0.1.0",
-  "homepage": "http://brow1144.github.io/To-Hell-And-Back/",
+  "homepage": "http://brow1144.github.io/ToHell/",
   "private": true,
   "dependencies": {
     "firebase": "5.5.5",

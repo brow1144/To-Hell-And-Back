@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {firestore} from './base.js';
+// import {firestore} from './base.js';
 
 import { NavLink } from 'react-router-dom'
 
@@ -31,7 +31,7 @@ class Home extends Component {
 
           <FormInline onSubmit={this.handleJoin} className="md-form m-0">
         
-            <MDBInput name='gameCode' style={{color: "whitesmoke"}} label="Game Code" />
+            <MDBInput type="number" name='gameCode' style={{color: "whitesmoke"}} label="Game Code" />
             
             <Button
               outline

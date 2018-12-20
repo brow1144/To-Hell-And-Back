@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import {firestore} from './base.js';
+// import {firestore} from './base.js';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
 
 import Home from './Home'
 import CreateGame from './CreateGame'
+import Lobby from './Lobby'
 
 import {Route, Switch, Redirect} from 'react-router-dom';
 
@@ -22,7 +23,11 @@ class App extends Component {
         )}/>
         
         <Route exact path='/ToHell/Home' render={() => (
-            <Home/>
+            <Home />
+        )}/>
+
+         <Route exact path='/ToHell/Lobby' render={() => (
+            <Lobby />
         )}/>
 
         <Route render={() => {

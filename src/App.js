@@ -8,6 +8,7 @@ import 'mdbreact/dist/css/mdb.css';
 import Home from './Home'
 import CreateGame from './CreateGame'
 import Lobby from './Lobby'
+import Join from './Join'
 
 import {Route, Switch, Redirect} from 'react-router-dom';
 
@@ -26,8 +27,12 @@ class App extends Component {
             <Home />
         )}/>
 
-         <Route exact path='/ToHell/Lobby/:code' render={(match) => (
+        <Route exact path='/ToHell/Lobby/:code' render={(match) => (
             <Lobby code={match.match.params.code}/>
+        )}/>
+
+        <Route exact path='/ToHell/Join/:code' render={(match) => (
+            <Join code={match.match.params.code}/>
         )}/>
 
         <Route render={() => {

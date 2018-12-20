@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect} from 'react-router-dom'
 import {db} from './base.js';
 import {Button, FormInline, MDBInput} from 'mdbreact'
 
@@ -12,6 +12,7 @@ class Join extends Component {
     this.state = {
       name: '',
       visible: false,
+      transition: false,
     }
   }
 
@@ -36,7 +37,7 @@ class Join extends Component {
                 players: players
               })
               .then(function() {
-                  console.log("Document successfully written!");
+                  self.setState({transition: true})
               })
               .catch(function(error) {
                   console.error("Error writing document: ", error);
@@ -59,6 +60,11 @@ class Join extends Component {
   }
 
   render() {
+
+    if (this.state.transition) {
+      return <Redirect to={`/ToHell/Lobby/${this.props.code}`}/>
+    }
+
     return (
 
       <div className="App">

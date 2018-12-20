@@ -39,11 +39,11 @@ class Lobby extends Component {
 
         <div style={{backgroundColor: '#282c34', color: 'whitesmoke',
                       paddingTop: '5em', }}>
-                      
+
           <Row>
           {this.state.players.map((key) => {
              return (
-              <Col sm='3'>
+              <Col key={key} sm='3'>
                 <p>{key}</p>
               </Col> 
                   

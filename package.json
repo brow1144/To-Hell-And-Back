@@ -1,11 +1,14 @@
 {
   "name": "to_hell_and_back",
   "version": "0.1.0",
-  "homepage": "http://brow1144.github.io/ToHell",
+  "homepage": "http://brow1144.github.io/To-Hell-And-Back/",
   "private": true,
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "firebase": "5.5.5",
+    "mdbreact": "^4.8.5-patch.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "reactstrap": "^6.5.0"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",

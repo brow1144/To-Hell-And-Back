@@ -37,6 +37,11 @@ class Guess extends Component {
     }
   }
 
+  nextPlayer = () => {
+    // TODO Switch to next person in line 
+    // Make sure that they arn't the last 
+  }
+
   render() {
 
     return (
@@ -44,7 +49,7 @@ class Guess extends Component {
       <div className="App">
         <header className="App-header">
           
-          
+
           {this.props.players.length > 0
             ?
               <p style={{fontSize: "2em"}}> {this.props.players[this.props.playerNumber].name}'s Round 1 Guess</p>
@@ -72,6 +77,7 @@ class Guess extends Component {
             <Button
                 outline
                 color="primary"
+                onClick={this.nextPlayer}
             >
                 Next!
             </Button>

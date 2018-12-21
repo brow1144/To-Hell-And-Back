@@ -46,8 +46,6 @@ class Join extends Component {
       return
     }
 
-    // TODO Set stuff
-
     let players = []
     db.collection("games").doc(this.props.code.toString())
     .get().then(function(doc) {
@@ -64,7 +62,7 @@ class Join extends Component {
             } else if (result === 'Already Taken') {
               // console.log('alreday taken')
 
-              // TODO Error Message
+              // Error Message
               self.setState({visible1: true})
 
               return

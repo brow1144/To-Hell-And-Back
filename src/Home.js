@@ -12,30 +12,30 @@ class Home extends Component {
     super();
 
     this.state = {
-      code: 0
+      code: 0, 
+      visible: false,
     }
   }
 
   handleJoin = (ev) => {
     ev.preventDefault()
 
-    console.log(ev.target.gameCode.value)
-    this.setState({code: ev.target.gameCode.value})
-    // this.checkGame(ev.target.gameCode.value)
+    this.checkGame(ev.target.gameCode.value)
   }
 
-  // checkGame = (code) => {
-  //   var docRef = db.collection("games").doc(code);
+  checkGame = (code) => {
+    let self = this
+    var docRef = db.collection("games").doc(code);
 
-  //   docRef.get().then(function(doc) {
-  //       if (doc.exists) {
-  //           console.log("Document data:", doc.data());
-  //       } else {
-  //           console.log("No such document!");
-  //       }
-  //   })
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+          self.setState({code: code})
+        } else {
+          self.setState({visible: true})
+        }
+    })
     
-  // }
+  }
 
 
   render() {
@@ -50,6 +50,8 @@ class Home extends Component {
           <p style={{fontSize: "2em"}}>
             To Hell and Back!
           </p>
+
+          { this.state.visible ? <p style={{color: 'yellow', fontSize: '0.8em'}}>Game code does not exist</p> : null  }
       
 
           <FormInline onSubmit={this.handleJoin} className="md-form m-0">

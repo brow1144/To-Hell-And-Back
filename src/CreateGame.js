@@ -13,6 +13,7 @@ class CreateGame extends Component {
       code: 0,
       name: '',
       visible: false,
+      password: '',
     }
   }
 
@@ -38,8 +39,10 @@ class CreateGame extends Component {
     //   players: [this.state.name],
     // });
 
+    let tmp = {name: this.state.name, password: this.state.password}
+
     db.collection("games").doc(this.state.code.toString()).set({
-      players: [this.state.name]
+      players: [tmp]
     })
     .then(function() {
         console.log("Document successfully written!");
@@ -51,6 +54,10 @@ class CreateGame extends Component {
 
   updateName = (ev) => {
     this.setState({name: ev.target.value})
+  }
+
+  updatePassword = (ev) => {
+    this.setState({password: ev.target.value})
   }
 
   render() {
@@ -66,6 +73,8 @@ class CreateGame extends Component {
           { this.state.visible ? <p style={{fontSize: '0.8em'}}>Please enter your name for the game!</p> : null  }
             
           <MDBInput onChange={this.updateName} name='gameCode' style={{color: "whitesmoke"}} label="Name" />
+
+          <MDBInput onChange={this.updatePassword} name='gameCode' style={{color: "whitesmoke"}} label="Short Password" />
 
           <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Lobby/${this.state.code}`}>
             <Button

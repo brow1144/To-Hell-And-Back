@@ -41,15 +41,13 @@ class Lobby extends Component {
                       paddingTop: '5em', }}>
 
           <Row>
-          {this.state.players.map((key) => {
-             return (
-              <Col key={key} sm='3'>
-                <p>{key}</p>
-              </Col> 
-                  
-            )
-          })}
-  
+            {Object.keys(this.state.players).map((key) => {
+              return (
+                <Col key={this.state.players[key].name} sm='3'>
+                  <p>{this.state.players[key].name}</p>
+                </Col>   
+              )
+            })}
           </Row>
 
           <p style={{height: '5em'}}> </p>

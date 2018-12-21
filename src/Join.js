@@ -13,6 +13,7 @@ class Join extends Component {
       name: '',
       visible: false,
       transition: false,
+      password: '',
     }
   }
 
@@ -31,7 +32,9 @@ class Join extends Component {
         if (doc.exists) {
             players = doc.data().players
 
-            players.unshift(self.state.name);
+            let tmp = {name: self.state.name, password: self.state.password}
+
+            players.unshift(tmp);
   
               db.collection("games").doc(self.props.code.toString()).set({
                 players: players
@@ -59,6 +62,10 @@ class Join extends Component {
     this.setState({name: ev.target.value})
   }
 
+  updatePassword = (ev) => {
+    this.setState({password: ev.target.value})
+  }
+
   render() {
 
     if (this.state.transition) {
@@ -77,6 +84,9 @@ class Join extends Component {
           { this.state.visible ? <p style={{fontSize: '0.8em'}}>Please enter your name for the game!</p> : null  }
             
           <MDBInput onChange={this.updateName} name='gameCode' style={{color: "whitesmoke"}} label="Name" />
+
+          <MDBInput onChange={this.updatePassword} name='gameCode' style={{color: "whitesmoke"}} label="Short Password" />
+
 
             <Button
                 outline

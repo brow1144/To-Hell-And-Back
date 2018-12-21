@@ -110,7 +110,7 @@ class Join extends Component {
   render() {
 
     if (this.state.transition) {
-      return <Redirect to={`/ToHell/Lobby/${this.props.code}`}/>
+      return <Redirect to={`/ToHell/Lobby/${this.props.code}/${this.state.name}`}/>
     }
 
     return (

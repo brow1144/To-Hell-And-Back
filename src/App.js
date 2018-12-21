@@ -23,12 +23,12 @@ class App extends Component {
             <CreateGame setGameCode={this.setGameCode}/>
         )}/>
         
-        <Route exact path='/ToHell/Home' render={() => (
+        <Route exact path='/ToHell' render={() => (
             <Home />
         )}/>
 
-        <Route exact path='/ToHell/Lobby/:code' render={(match) => (
-            <Lobby code={match.match.params.code}/>
+        <Route exact path='/ToHell/Lobby/:code/:name' render={(match) => (
+            <Lobby code={match.match.params.code} name={match.match.params.name}/>
         )}/>
 
         <Route exact path='/ToHell/Join/:code' render={(match) => (
@@ -38,7 +38,7 @@ class App extends Component {
         <Route render={() => {
           return (
             // eslint-disable-next-line
-            <Redirect to={`/ToHell/Home`} />
+            <Redirect to={`/ToHell`} />
           )
         }}/>
 

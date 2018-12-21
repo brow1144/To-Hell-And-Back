@@ -38,12 +38,19 @@ class Guess extends Component {
   }
 
   render() {
+
     return (
 
       <div className="App">
         <header className="App-header">
           
-          <p style={{fontSize: "2em"}}> {this.props.name}'s Round 1 Guess</p>
+          
+          {this.props.players.length > 0
+            ?
+              <p style={{fontSize: "2em"}}> {this.props.players[this.props.playerNumber].name}'s Round 1 Guess</p>
+            :
+              null
+          }
 
           <p style={{height: '1.5em'}}> </p>
 

@@ -77,7 +77,7 @@ class Join extends Component {
 
             players.unshift(tmp);
   
-              db.collection("games").doc(self.props.code.toString()).set({
+              db.collection("games").doc(self.props.code.toString()).update({
                 players: players
               })
               .then(function() {

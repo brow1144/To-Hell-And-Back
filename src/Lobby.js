@@ -51,7 +51,7 @@ class Lobby extends Component {
 
           <p style={{height: '5em'}}> </p>
 
-          <NavLink style={{textDecoration: 'none'}} to={`/ToHell/${this.props.code}/${this.props.name}/Guess/1`}>
+          <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Game/0/${this.props.code}/${this.props.name}/Guess/1/0`}>
             <Button
                 outline
                 color="primary"

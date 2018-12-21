@@ -10,6 +10,7 @@ import CreateGame from './CreateGame'
 import Lobby from './Lobby'
 import Join from './Join'
 import Guess from './Guess'
+import Main from './Main'
 
 import {Route, Switch, Redirect} from 'react-router-dom';
 
@@ -36,8 +37,10 @@ class App extends Component {
             <Join code={match.match.params.code}/>
         )}/>
 
-        <Route exact path='/ToHell/:code/:name/Guess/:roundnumber' render={(match) => (
-            <Guess code={match.match.params.code} name={match.match.params.name} roundNumber={match.match.params.roundnumber}/>
+        {/* <Route exact path='/ToHell/:code/:name/Guess/:roundnumber/:playerNumber' render={(match) => ( */}
+        <Route path='/ToHell/Game/0/:code/:name' render={(match) => (
+            // <Guess code={match.match.params.code} name={match.match.params.name} roundNumber={match.match.params.roundnumber}/>
+            <Main code={match.match.params.code} name={match.match.params.name} />
         )}/>
 
         <Route render={() => {

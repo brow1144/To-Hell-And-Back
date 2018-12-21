@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {db} from './base.js';
 import {Button, MDBInput} from 'mdbreact'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 
 class CreateGame extends Component {
 
@@ -14,6 +14,7 @@ class CreateGame extends Component {
       name: '',
       visible: false,
       password: '',
+      transition: false,
     }
   }
 
@@ -29,6 +30,7 @@ class CreateGame extends Component {
   }
 
   goToLobby = () => {
+    let self = this
     if (this.state.name === null || this.state.name === '' || this.state.name === undefined) {
       this.setState({visible: true})
       return
@@ -38,12 +40,16 @@ class CreateGame extends Component {
     //   players: [this.state.name],
     // });
 
-    let tmp = {name: this.state.name, password: this.state.password}
+    let tmp = {name: self.state.name, password: self.state.password}
 
-    db.collection("games").doc(this.state.code.toString()).set({
-      players: [tmp]
+    db.collection("games").doc(self.state.code.toString()).set({
+      players: [tmp],
+      playerGuessing: 0,
+      round: 1,
+      state: "Guess"
     })
     .then(function() {
+      self.setState({transition: true})
         console.log("Document successfully written!");
     })
     .catch(function(error) {
@@ -60,6 +66,11 @@ class CreateGame extends Component {
   }
 
   render() {
+
+    if (this.state.transition) {
+      return <Redirect to={`/ToHell/Lobby/${this.state.code}/${this.state.name}`}/>
+    }
+
     return (
 
       <div className="App">
@@ -75,7 +86,7 @@ class CreateGame extends Component {
 
           <MDBInput onChange={this.updatePassword} name='gameCode' style={{color: "whitesmoke"}} label="Short Password" />
 
-          <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Lobby/${this.state.code}`}>
+          {/* <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Lobby/${this.state.code}/${this.state.name}`}> */}
             <Button
                 outline
                 color="primary"
@@ -83,7 +94,7 @@ class CreateGame extends Component {
             >
                 Go to Lobby!
             </Button>
-          </NavLink>
+          {/* </NavLink> */}
 
         </header>
       </div>

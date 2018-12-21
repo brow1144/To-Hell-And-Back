@@ -20,7 +20,6 @@ class Lobby extends Component {
 
     db.collection("games").doc(this.props.code.toString())
     .onSnapshot(function(doc) {
-        // console.log(doc.data().players);
         self.setState({players: doc.data().players})
     });
   }
@@ -52,7 +51,7 @@ class Lobby extends Component {
 
           <p style={{height: '5em'}}> </p>
 
-          <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Game/`}>
+          <NavLink style={{textDecoration: 'none'}} to={`/ToHell/${this.props.code}/${this.props.name}/Guess/1`}>
             <Button
                 outline
                 color="primary"

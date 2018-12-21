@@ -9,6 +9,7 @@ import Home from './Home'
 import CreateGame from './CreateGame'
 import Lobby from './Lobby'
 import Join from './Join'
+import Guess from './Guess'
 
 import {Route, Switch, Redirect} from 'react-router-dom';
 
@@ -33,6 +34,10 @@ class App extends Component {
 
         <Route exact path='/ToHell/Join/:code' render={(match) => (
             <Join code={match.match.params.code}/>
+        )}/>
+
+        <Route exact path='/ToHell/:code/:name/Guess/:roundnumber' render={(match) => (
+            <Guess code={match.match.params.code} name={match.match.params.name} roundNumber={match.match.params.roundnumber}/>
         )}/>
 
         <Route render={() => {

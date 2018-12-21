@@ -29,7 +29,6 @@ class CreateGame extends Component {
   }
 
   goToLobby = () => {
-    let self = this
     if (this.state.name === null || this.state.name === '' || this.state.name === undefined) {
       this.setState({visible: true})
       return

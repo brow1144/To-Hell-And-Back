@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { NavLink, Redirect} from 'react-router-dom'
+import { Redirect} from 'react-router-dom'
 import {db} from './base.js';
-import {Button, FormInline, MDBInput} from 'mdbreact'
+import {Button, MDBInput} from 'mdbreact'
 
 class Join extends Component {
 
@@ -12,9 +12,31 @@ class Join extends Component {
     this.state = {
       name: '',
       visible: false,
+      visible1: false,
       transition: false,
       password: '',
     }
+  }
+
+  alreadyTaken = (players) => {
+    let self = this
+    let result =  ''
+    for (let i in players) {
+      let player = players[i]
+      if (player.name === self.state.name && player.password === self.state.password) {
+        // Log back in 
+        result = 'Log In'
+        return result
+      } else if (player.name === self.state.name && player.password !== self.state.password) {
+        // Player with same name
+        result = 'Already Taken'
+        return result
+      } else {
+        // New Player
+        result = 'New Player'
+      }
+    }
+    return result
   }
 
   goToLobby = () => {
@@ -31,6 +53,25 @@ class Join extends Component {
     .get().then(function(doc) {
         if (doc.exists) {
             players = doc.data().players
+
+            let result = self.alreadyTaken(players)
+            
+            if (result === 'Log In') {
+              // console.log('log back in')
+              self.setState({transition: true})
+              return
+
+            } else if (result === 'Already Taken') {
+              // console.log('alreday taken')
+
+              // TODO Error Message
+              self.setState({visible1: true})
+
+              return
+            } else {
+              // console.log('new player')
+
+            }
 
             let tmp = {name: self.state.name, password: self.state.password}
 
@@ -82,6 +123,8 @@ class Join extends Component {
           </p>
 
           { this.state.visible ? <p style={{fontSize: '0.8em'}}>Please enter your name for the game!</p> : null  }
+          { this.state.visible1 ? <p style={{fontSize: '0.8em'}}>That name is already taken!</p> : null  }
+
             
           <MDBInput onChange={this.updateName} name='gameCode' style={{color: "whitesmoke"}} label="Name" />
 

@@ -20,7 +20,7 @@ class Lobby extends Component {
 
     db.collection("games").doc(this.props.code.toString())
     .onSnapshot(function(doc) {
-        console.log(doc.data().players);
+        // console.log(doc.data().players);
         self.setState({players: doc.data().players})
     });
   }

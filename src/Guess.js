@@ -18,16 +18,42 @@ class Guess extends Component {
   }
 
   componentWillMount() {
-
+    let self = this
+    db.collection("games").doc(this.props.code.toString())
+    .onSnapshot(function(doc) {
+        let tmp = doc.data().players[self.props.playerNumber].guess[self.props.roundNumber - 1]
+        if (tmp === undefined || tmp === null) tmp = 0
+        console.log(tmp)
+        self.setState({
+          guess: tmp,
+        })
+    });
   }
 
   increment = () => {
     let tmp = this.state.guess + 1
-    this.setState({guess: tmp})
 
-    if (this.state.guess + 1 > 10) {
+    if (tmp > 10) {
       this.setState({guess: 10})
+      return
     }
+    this.setState({guess: tmp}, () => {
+      let tmpPlayers = this.props.players;
+      tmpPlayers[this.props.playerNumber].guess[this.props.roundNumber - 1] = this.state.guess
+  
+      console.log(tmpPlayers)
+  
+      db.collection("games").doc(this.props.code.toString()).update({
+        players: tmpPlayers
+      })
+      .then(function() {
+          // self.setState({transition: true})
+      })
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      });
+    })
+  
   }
 
   decrement = () => {

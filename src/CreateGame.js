@@ -40,7 +40,7 @@ class CreateGame extends Component {
     //   players: [this.state.name],
     // });
 
-    let tmp = {name: self.state.name, password: self.state.password}
+    let tmp = {name: self.state.name, password: self.state.password, guess: []}
 
     db.collection("games").doc(self.state.code.toString()).set({
       players: [tmp],

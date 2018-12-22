@@ -71,7 +71,7 @@ class Join extends Component {
 
             }
 
-            let tmp = {name: self.state.name, password: self.state.password}
+            let tmp = {name: self.state.name, password: self.state.password, guess: []}
 
             players.push(tmp);
   

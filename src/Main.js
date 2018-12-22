@@ -30,14 +30,24 @@ class Main extends Component {
 
   componentWillMount = () => {
     let self = this
+
+    db.collection("games").doc(this.props.code.toString()).get().then(function(doc) {
+        if (doc.exists) {
+          self.setState({players: doc.data().players})
+        } else {
+          // self.setState({visible: true})
+        }
+    })
+
     db.collection("games").doc(this.props.code.toString())
     .onSnapshot(function(doc) {
         self.setState({
-          players: doc.data().players,
+          // players: doc.data().players,
           playerGuessing: doc.data().playerGuessing,
           round: doc.data().round,
           state: doc.data().state
         }, () => {
+          // TODO LOOK AT THIS, makes shit look weird
           self.setState({transition: true})
         })
     });

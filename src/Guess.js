@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {db} from './base.js';
 import {Button} from 'mdbreact'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import {Row, Col} from 'reactstrap'
 
 class Guess extends Component {
@@ -12,6 +12,8 @@ class Guess extends Component {
 
     this.state = {
       guess: 0,
+      playerGuessing: 0,
+      transition: false,
     }
   }
 
@@ -38,13 +40,41 @@ class Guess extends Component {
   }
 
   nextPlayer = () => {
+    let self = this
     // TODO Switch to next person in line 
     // Make sure that they arn't the last 
 
-    
+    db.collection("games").doc(this.props.code.toString())
+    .get().then(function(doc) {
+        let data = doc.data()
+        let tmp = data.playerGuessing + 1
+
+        // TODO, Time to switch out of guessing if tmp > players.length
+        if (tmp <= data.players.length - 1) {
+
+          self.setState({playerGuessing: tmp})
+
+          db.collection("games").doc(self.props.code.toString()).update({
+            playerGuessing: tmp
+          })
+          .then(function() {
+              self.setState({transition: true})
+          })
+          .catch(function(error) {
+              console.error("Error writing document: ", error);
+          });
+        }
+
+    });
   }
 
   render() {
+
+    if (this.state.transition) {
+      this.setState({transition: false})
+      return <Redirect to={`/ToHell/Game/0/${this.props.code}/${this.props.name}/${this.props.state}/${this.props.round}/${this.state.playerGuessing}`}/>
+    }
+
 
     return (
 
@@ -75,7 +105,7 @@ class Guess extends Component {
            
           <p style={{height: '3em'}}> </p>
 
-          <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Lobby/${this.state.code}`}>
+          {/* <NavLink style={{textDecoration: 'none'}} to={`/ToHell/Lobby/${this.state.code}`}> */}
             <Button
                 outline
                 color="primary"
@@ -83,7 +113,7 @@ class Guess extends Component {
             >
                 Next!
             </Button>
-          </NavLink>
+          {/* </NavLink> */}
 
         </header>
       </div>

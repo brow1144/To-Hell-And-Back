@@ -40,6 +40,8 @@ class Guess extends Component {
   nextPlayer = () => {
     // TODO Switch to next person in line 
     // Make sure that they arn't the last 
+
+    
   }
 
   render() {

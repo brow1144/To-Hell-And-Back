@@ -73,7 +73,7 @@ class Join extends Component {
 
             let tmp = {name: self.state.name, password: self.state.password}
 
-            players.unshift(tmp);
+            players.push(tmp);
   
               db.collection("games").doc(self.props.code.toString()).update({
                 players: players
